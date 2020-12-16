@@ -8,8 +8,7 @@
 		private ?string $heure_depart = null;
 		private ?string $heure_arrivee = null;
 		private ?string $ville_depart = null;
-		private ?string $ville_arrivee = null;
-		//private ?string $escale = null;
+		private ?string $ville_arrivee = null;		
 		private ?string $classe = null;
 		private ?float $prix = null;
 
@@ -23,7 +22,7 @@
 			$this->heure_arrivee=$heure_arrivee;
 			$this->ville_depart=$ville_depart;
 			$this->ville_arrivee=$ville_arrivee;
-			//$this->escale=$escale;
+
 			$this->classe=$classe;
 			$this->prix=$prix;
 		}
