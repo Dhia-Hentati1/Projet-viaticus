@@ -22,7 +22,7 @@
 			$this->heure_arrivee=$heure_arrivee;
 			$this->ville_depart=$ville_depart;
 			$this->ville_arrivee=$ville_arrivee;
-
+			//$this->classe=$classe;
 			$this->classe=$classe;
 			$this->prix=$prix;
 		}
