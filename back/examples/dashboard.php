@@ -38,7 +38,7 @@
   <link href="../assets/demo/demo.css" rel="stylesheet" />
 </head>
 
-<body class="">
+<body >
   <div class="wrapper ">
     <div class="sidebar" data-color="orange">
       <!--

@@ -22,13 +22,15 @@
 </head>
 
 <body >
-<div class="sidebar" data-color="orange" >
+
+<div class="sidebar" data-color="orange"  >
     <!--
       Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
   -->
     <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal" align="center">
-            Viaticus
+    <img class=" now-ui-icons " src="../back/assets/img/logo.png" alt="..." width="50" align="left"> 
+        <a class="simple-text logo-normal" align="center">
+          <strong> Viaticus  </strong>
         </a>
     </div>
     <div class="sidebar-wrapper" id="sidebar-wrapper">
@@ -79,7 +81,7 @@
         </ul>
      </div>
 </div>
-<div class="main-panel" id="main-panel">
+<div class="main-panel" id="main-panel" >
     <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
         <div class="container-fluid">
             <div class="navbar-wrapper">
@@ -136,9 +138,9 @@
     <!-- End Navbar -->
 
 
-  <div class="panel-header panel-header-sm">
+  <div class="panel-header panel-header-lg">
     </div>
-    
+ 
 </div>
   <!--   Core JS Files   -->
   <script src="../assets/js/core/jquery.min.js"></script>

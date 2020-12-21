@@ -20,9 +20,14 @@
 </head>
 
 <body >
-<footer class="footer">
+
+ <div class="main-panel" id="main-panel"  >
+<div class="content">
+</div>
+
+<footer class="footer"  style="position:absolute; bottom:0; width:100%; height: 100px;">
         <div class=" container-fluid ">
-          <nav>
+          <nav style=" margin-left: 16%;">
             <ul>
               <li>
                 <a href="https://www.creative-tim.com">
@@ -41,13 +46,14 @@
               </li>
             </ul>
           </nav>
-          <div class="copyright" id="copyright">
+          <div class="copyright" id="copyright" style=" margin-right: 1%;">
             &copy; <script>
               document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
             </script>, Designed by <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
           </div>
         </div>
       </footer>
+</div>
 
     
 

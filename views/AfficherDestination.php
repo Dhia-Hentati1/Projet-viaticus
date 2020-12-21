@@ -6,16 +6,14 @@
 	$listeplaces=$Ville_arriveeC->AfficherDestination();
 
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
 <body >
-
-      <div class="content" style="margin-left: 20%;">
+<div class="wrapper ">
+      <div class="content" style="margin-left: 25%; position:absolute; z-index:2; margin-top: 7% ;">
         <div class="row">
-          <div class="col-md-12 ">
+          <div class="col-md-11" >
             <div class="card">
               <div class="card-header ">                       
               <h4 class="card-title" align="center"> Destination 
@@ -114,6 +112,7 @@
   <?php
    include "./footer.php";
   ?>
+</div>
 </body>
 
 </html>

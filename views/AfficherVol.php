@@ -9,16 +9,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-
 <body >
- <div class="content" style="margin-left: 20%;">
+ <div class="content" style="margin-left: 21.5% ;  position:absolute; z-index:2; margin-top: 7% ;">
         <div class="row">
-        <div class="col-md-4 ml-auto mr-auto">
-           
-          </div>
           <div class="col-md-12">
-            <div class="card">
+            <div class="card" >
               <div class="card-header">
                 <h4 class="card-title" align="center"> Liste Des Vols</h4>
                 <div align="right">
