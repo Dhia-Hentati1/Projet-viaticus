@@ -13,6 +13,7 @@ include "dashbord.php";
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/css/now-ui-dashboard.css?v=1.5.0" rel="stylesheet" />
     <link href="assets/demo/demo.css" rel="stylesheet" />
+    <link href="assets/css/style.css"/>
 </head>
 <body>
 <div class="content" align="center">
@@ -105,7 +106,7 @@ if (
                 <td><img src="./assets/img/<?php echo $row['image']?>" width="150" height="150"></td>
                 <td>
                     <form method="POST" action="supprimerMoyen.php">
-                        <input class="btn btn-danger btn-round" type="submit" name="supprimer" value="supprimer">
+                        <input class="btn btn-danger btn-round btn btn-primary" type="submit" name="supprimer" value="supprimer">
                         <input type="hidden" value=<?PHP echo $row['matricule']; ?> name="matricule">
                     </form>
                 </td>

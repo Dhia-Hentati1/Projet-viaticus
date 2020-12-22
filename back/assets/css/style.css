@@ -31,3 +31,10 @@ width: 100%;
     border: #d1e8ff 1px solid;
     color: #FFF;
 }
+.btn-primary {
+    color: white;
+    background-color: #000000;
+    border: none;
+    border-radius: 0.3em;
+    font-weight: bold;
+  }

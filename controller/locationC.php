@@ -103,7 +103,7 @@ class locationC
         }
     }
     function rechercherLocation($type){
-        $sql="SELECT * FROM location where type=$type";
+        $sql="SELECT * FROM location where type=$type || prix=$type";
         $db = config1::getConnexion();
         try{
             $query=$db->prepare($sql);
