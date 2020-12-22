@@ -1,7 +1,7 @@
 <?php
     include_once '../Model/Vol.php';
     include_once '../Controller/VolC.php';
-    include "./header.php";
+    include "./dashboard.php";
     $error = "";
 
     // create user

@@ -1,6 +1,6 @@
 <?PHP
 	include "../controller/VolC.php";
-  include "./header.php";
+  include "./dashboard.php";
 	$VolC=new VolC();
 
 

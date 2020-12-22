@@ -1,25 +1,28 @@
 <?php
 	include "../controller/destinationC.php";
 	include_once '../Model/destination.php';
-  include "./header.php";
+  include "./dashboard.php";
 	$Ville_arriveeC = new Ville_arriveeC();
 	$error = "";
 	
 	if (
 		    isset($_POST["ville"]) &&
         isset($_POST["pays"]) &&
-        isset($_POST["image"]) 
+        isset($_POST["image"]) &&
+        isset($_POST["description"]) 
 	){
 		if (
             
             !empty($_POST["ville"]) &&
             !empty($_POST["pays"]) &&
-            !empty($_POST["image"]) 
+            !empty($_POST["image"]) &&
+            !empty($_POST["description"]) 
         ) {
             $place = new ville_arrivee(
                 $_POST['ville'],
                 $_POST['pays'],
-                $_POST['image']
+                $_POST['image'],
+                $_POST['description']
 			);
 			
             $Ville_arriveeC->ModifierDestination($place, $_GET['id_destination']);

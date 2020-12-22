@@ -1,6 +1,6 @@
 <?PHP
   include "../controller/destinationC.php";
-  include "./header.php";
+  include "./dashboard.php";
  
 	$Ville_arriveeC=new ville_arriveeC();
 	$listeplaces=$Ville_arriveeC->AfficherDestination();
@@ -69,10 +69,10 @@
                           <td><?PHP echo $place['id_destination']; ?></td>
                           <td><?PHP echo $place['ville']; ?></td>
                           <td><?PHP echo $place['pays']; ?></td>
-                          <td><img src="../front/assets/images/<?php echo $place['image'] ?> " height="200" width="250">   </td>
+                          <td><img src="../back/assets/img/<?php echo $place['image'] ?> " height="200" width="250">   </td>
                           <td width="20%"><?PHP echo $place['description']; ?></td>
                           <td>
-                            <form method="GET" action="test.php">
+                            <form method="GET" action="VolDeDestination.php">
                             <input class="btn btn-info btn-round" type="submit" name="détails" value="Vols">
                             <input type="hidden" value=<?PHP echo $place['id_destination']; ?> name="id_destination">
                             </form>

@@ -1,7 +1,7 @@
 <?php
     include_once '../Model/destination.php';
     include_once '../Controller/destinationC.php';
-    include "./header.php";
+    include "./dashboard.php";
     $error = "";
 
     // create user
@@ -34,6 +34,7 @@
         else
             $error = "Missing information";
     }
+ 
 
     
 ?>
