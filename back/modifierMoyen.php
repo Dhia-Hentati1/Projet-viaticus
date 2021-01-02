@@ -1,7 +1,7 @@
 <?php
 include "../controller/moyenTransportC.php";
 include_once "../model/moyenTransport.php";
-
+include "dashbord.php";
 $moyenC = new moyenTransportC();
 $error = "";
 if (
