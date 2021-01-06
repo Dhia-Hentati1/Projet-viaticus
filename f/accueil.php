@@ -1,4 +1,10 @@
+<?PHP
+  include "../controller/destinationC.php";
 
+	$Ville_arriveeC=new ville_arriveeC();
+	$listeplaces=$Ville_arriveeC->AfficherDestination();
+
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -78,26 +84,17 @@
 			<div class="container">
 				<div class="nav-header">
 					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-					<h1 id="fh5co-logo"><a href="index.html"><i class="icon-airplane"></i>Travel</a></h1>
+					<h1 id="fh5co-logo"><a href="acceuil.php">
+					<img class=" now-ui-icons " src="../back/assets/img/logo.png" alt="..." width="50" align="left"> 
+					Viaticus</a></h1>
 					<!-- START #fh5co-menu-wrap -->
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
-							<li><a href="index.html">Home</a></li>
+							<li><a href="accueil.php">Accueil</a></li>
 							<li>
-								<a href="vacation.html" class="fh5co-sub-ddown">Vacations</a>
-								<ul class="fh5co-sub-menu">
-									<li><a href="#">Family</a></li>
-									<li><a href="#">CSS3 &amp; HTML5</a></li>
-									<li><a href="#">Angular JS</a></li>
-									<li><a href="#">Node JS</a></li>
-									<li><a href="#">Django &amp; Python</a></li>
-								</ul>
+								<a href="destination.php" class="fh5co-sub-ddown">Destination</a>								
 							</li>
-							<li><a href="flight.html">Flights</a></li>
-							<li><a href="hotel.html">Hotel</a></li>
-							<li class="active"><a href="car.html">Car</a></li>
-							<li><a href="blog.html">Blog</a></li>
-							<li><a href="contact.html">Contact</a></li>
+							<li><a href="flight.php">Vols</a></li>						
 						</ul>
 					</nav>
 				</div>
@@ -108,20 +105,19 @@
 	
 		<div class="fh5co-hero">
 			<div class="fh5co-overlay"></div>
-			<div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(images/cover_bg_4.jpg);">
+			<div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(images/cover_bg_1.jpg);">
 				<div class="desc">
 					<div class="container">
 						<div class="row">
 							<div class="col-sm-5 col-md-5">
-								<!-- <a href="index.html" id="main-logo">Travel</a> -->
 								<div class="tabulation animate-box">
 
 								  <!-- Nav tabs -->
 								   <ul class="nav nav-tabs" role="tablist">
-								      <li role="presentation">
+								      <li role="presentation" class="active">
 								      	<a href="#flights" aria-controls="flights" role="tab" data-toggle="tab">Flights</a>
 								      </li>
-								      <li role="presentation" class="active">
+								      <li role="presentation">
 								    	   <a href="#hotels" aria-controls="hotels" role="tab" data-toggle="tab">Hotels</a>
 								      </li>
 								      <li role="presentation">
@@ -131,7 +127,7 @@
 
 								   <!-- Tab panes -->
 									<div class="tab-content">
-									 <div role="tabpanel" class="tab-pane" id="flights">
+									 <div role="tabpanel" class="tab-pane active" id="flights">
 										<div class="row">
 											<div class="col-xxs-12 col-xs-6 mt">
 												<div class="input-field">
@@ -198,7 +194,7 @@
 										</div>
 									 </div>
 
-									 <div role="tabpanel" class="tab-pane active" id="hotels">
+									 <div role="tabpanel" class="tab-pane" id="hotels">
 									 	<div class="row">
 											<div class="col-xxs-12 col-xs-12 mt">
 												<div class="input-field">
@@ -342,100 +338,68 @@
 					</div>
 				</div>
 			</div>
-
 		</div>
-		
+	
+			<div align="right">
+              	<table >
+				  	<th>							
+					<form method="GET" action="recherchef.php" >
+						<div class="col-xxs-12 col-xs-6 mt">
+							<div class="input-field">
+								<label for="from"></label>
+								<input type="text" class="form-control" id="recherche" name="recherche" placeholder="">
+							</div>
+						</div>
+						<div class="col-xxs-10 col-xs-4 ">
+							<div class="input-field" align="center">
+								<label > </label>
+								<button class="btn btn-primary form-control" >Chercher</button>  
+							</div>
+						</div>
+					</form>	
+					</th>
+				</table>						
+			</div>
 
-		<div id="fh5co-car" class="fh5co-section-gray">
-			<div class="container">
+		<div id="fh5co-destination">
+			<div class="tour-fluid">
 				<div class="row">
-					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
-						<h3>Car Rent In U.S.</h3>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-					</div>
-				</div>
-				<div class="row row-bottom-padded-md">
-					<div class="col-md-6 animate-box">
-						<div class="car">
-							<div class="one-4">
-								<h3>Economy</h3>
-								<span class="price">$100<small> / day</small></span>
-								<span class="price">$200<small> / week</small></span>
-								<span class="price">$250<small> / mos.</small></span>
-								<span class="price">$350<small> Total (Tax incl.)</small></span>
-							</div>
-							<div class="one-1" style="background-image: url(images/car-1.jpg);">
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 animate-box">
-						<div class="car">
-							<div class="one-4">
-								<h3>Economy</h3>
-								<span class="price">$100<small> / day</small></span>
-								<span class="price">$200<small> / week</small></span>
-								<span class="price">$250<small> / mos.</small></span>
-								<span class="price">$350<small> Total (Tax incl.)</small></span>
-							</div>
-							<div class="one-1" style="background-image: url(images/car-2.jpg);">
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 animate-box">
-						<div class="car">
-							<div class="one-4">
-								<h3>Luxury</h3>
-								<span class="price">$100<small> / day</small></span>
-								<span class="price">$200<small> / week</small></span>
-								<span class="price">$250<small> / mos.</small></span>
-								<span class="price">$350<small> Total (Tax incl.)</small></span>
-							</div>
-							<div class="one-1" style="background-image: url(images/car-3.jpg);">
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 animate-box">
-						<div class="car">
-							<div class="one-4">
-								<h3>Economy</h3>
-								<span class="price">$100<small> / day</small></span>
-								<span class="price">$200<small> / week</small></span>
-								<span class="price">$250<small> / mos.</small></span>
-								<span class="price">$350<small> Total (Tax incl.)</small></span>
-							</div>
-							<div class="one-1" style="background-image: url(images/car-4.jpg);">
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 animate-box">
-						<div class="car">
-							<div class="one-4">
-								<h3>Economy</h3>
-								<span class="price">$100<small> / day</small></span>
-								<span class="price">$200<small> / week</small></span>
-								<span class="price">$250<small> / mos.</small></span>
-								<span class="price">$350<small> Total (Tax incl.)</small></span>
-							</div>
-							<div class="one-1" style="background-image: url(images/car-5.jpg);">
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 animate-box">
-						<div class="car">
-							<div class="one-4">
-								<h3>Economy</h3>
-								<span class="price">$100<small> / day</small></span>
-								<span class="price">$200<small> / week</small></span>
-								<span class="price">$250<small> / mos.</small></span>
-								<span class="price">$350<small> Total (Tax incl.)</small></span>
-							</div>
-							<div class="one-1" style="background-image: url(images/car-6.jpg);">
-							</div>
-						</div>
+					<div class="col-md-12">
+						<ul id="fh5co-destination-list" class="animate-box">
+							<li class="one-forth text-center" style="background-image: url(../back/assets/img/img.jpg); ">					
+							</li>
+							<li class="one-half text-center">
+								<div class="title-bg">
+									<div class="case-studies-summary">
+										<h2>Nos Destinations</h2>
+										<span><a href="destination.php">Voir toutes les  destinations</a></span>
+									</div>
+								</div>
+							</li>
+							<li class="one-forth text-center" style="background-image: url(../back/assets/img/images.jpg); ">					
+							</li>
+						
+							<?PHP
+                       			 foreach($listeplaces as $place){		
+							  ?>					
+							<li class="one-forth text-center" style="background-image: url(../back/assets/img/<?php echo $place['image'] ?> ); ">
+								<a>
+									<div class="case-studies-summary">
+										<h2><?PHP echo $place['ville']; ?></h2>
+									</div>
+								</a>
+							</li>																					
+							<?PHP
+                   			 }
+                   		    ?>
+						</ul>		
 					</div>
 				</div>
 			</div>
 		</div>
+
+		
+		<!-- fh5co-blog-section -->
 		<div id="fh5co-testimonial" style="background-image:url(images/img_bg_1.jpg);">
 		<div class="container">
 			<div class="row animate-box">

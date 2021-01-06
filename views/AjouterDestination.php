@@ -29,7 +29,7 @@
                       
             );
             $placeC->AjouterDestination($place);
-            header('Location:AfficherDestination.php');
+            //header('Location:AfficherDestination.php');
         }
         else
             $error = "Missing information";
@@ -44,10 +44,12 @@
 
 <body >
 
-      <div class="content" style="margin-left: 25%; position:absolute; z-index:2; margin-top: 7% ;">
+      <div class="content" style="margin-left: 30%; margin-right: 15%;">
         <div class="row">
-          <div class="col-md-12" style="margin-left: 30%;">
+          <div class="col-md-12" >
+          
             <div class="card">
+            
               <div class="card-header">
                 <h5 class="title" align="center">Ajouter destination</h5>
 
@@ -58,10 +60,8 @@
                    </a>   
                  </button>
               </div>
-
-              <div id="erreur"></div>
               <div class="card-body">
-                <form action="" method="POST">
+                <form action="" method="POST" >
 
                   <div class="row">
                     <div class="col-md-6 pr-1">
@@ -97,15 +97,15 @@
                     <div class="col-md-6 pr-1">
                       <div class="form-group">
                         <label>Description</label>
-                        <input type="text" class="form-control" name="description" id="description" required>
-                        <span class="validity"></span>
+                        <textarea class="form-control" name="description"  rows="3" id="description"  required></textarea>
                       </div>
                       
                     </div>
                   </div>                                                                                
                   <div class="form-group">
                     <div style="text-align:center" data-align="center" >
-                    <input  id="submit" class="btn btn-warning" type="submit" value="Ajouter destination" >                   
+                    <input  id="submit" class="btn btn-warning" type="submit" value="Ajouter destination" >  
+                    <INPUT TYPE="reset" NAME="reset" VALUE="Effacer" class="btn btn-warning">                 
                     </div>
                   </div>
                 </form>
@@ -118,7 +118,4 @@
    </div> 
    
 </body>
-<?php
-   include "./footer.php";
-  ?>
 </html>

@@ -1,9 +1,12 @@
 <?PHP
 	include "../controller/volC.php";
 	
-	$VolC=new VolC();
-	$listeUsers=$VolC->TriVol();
+  $VolC=new VolC();
+  
+	$listeUsers=$VolC->TriVol($_GET['tri']);
   include "./dashboard.php";
+
+                       
 ?>
 
 <!DOCTYPE html>
@@ -11,23 +14,19 @@
 
 <body class="">
   
-      <div class="content" style="margin-left: 21.5% ;  position:absolute; z-index:2; margin-top: 7% ;">
+      <div class="content" style="margin-left: 21.5% ; margin-right: 1% ; ">
         <div class="row">
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
                 <h4 class="card-title" align="center"> Liste Des Vols</h4>
-                <div align="right">
-                <button class="btn btn-warning btn-fab  btn-round ">
+                <div align="right">               
+                <button class="btn btn-warning   btn-round ">
                    <a href="./AfficherVol.php">
                      <i class="" >Annuler Tri</i> 
                    </a>   
-                 </button>  
-                 <button class="btn btn-warning btn-fab btn-icon btn-round ">
-                   <a href="./AfficherVolR.php">
-                     <i class="now-ui-icons ui-1_zoom-bold" ></i> 
-                   </a>   
-                 </button>                
+                 </button>
+                                
                <button class="btn btn-warning btn-fab btn-icon btn-round " >
                   <a href="./AjouterVol.php">
                     <i class="now-ui-icons ui-1_simple-add" ></i> 
@@ -94,7 +93,8 @@
                     }
                   ?>
                     </tbody>
-                  </table>                  
+                  </table> 
+                                 
                 </div>
               </div>
             </div>           
@@ -102,7 +102,5 @@
         </div>
       </div>
 </body>
-<?php
-   include "./footer.php";
-  ?>
+
 </html>

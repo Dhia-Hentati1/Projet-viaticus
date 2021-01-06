@@ -1,4 +1,9 @@
+<?PHP
+	include "../controller/destinationC.php";
+	$Ville_arriveeC=new Ville_arriveeC();
+	$listeplaces=$Ville_arriveeC->AfficherDestination();
 
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -93,11 +98,11 @@
 									<li><a href="#">Django &amp; Python</a></li>
 								</ul>
 							</li>
-							<li><a href="flight.html">Flights</a></li>
+							<li class="active"><a href="flight.html">Flights</a></li>
 							<li><a href="hotel.html">Hotel</a></li>
 							<li><a href="car.html">Car</a></li>
 							<li><a href="blog.html">Blog</a></li>
-							<li class="active"><a href="contact.html">Contact</a></li>
+							<li><a href="contact.html">Contact</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -108,19 +113,20 @@
 	
 		<div class="fh5co-hero">
 			<div class="fh5co-overlay"></div>
-			<div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(images/cover_bg_1.jpg);">
+			<div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(images/cover_bg_3.jpg);">
 				<div class="desc">
 					<div class="container">
 						<div class="row">
 							<div class="col-sm-5 col-md-5">
+								<!-- <a href="index.html" id="main-logo">Travel</a> -->
 								<div class="tabulation animate-box">
 
 								  <!-- Nav tabs -->
 								   <ul class="nav nav-tabs" role="tablist">
-								      <li role="presentation">
+								      <li role="presentation" class="active">
 								      	<a href="#flights" aria-controls="flights" role="tab" data-toggle="tab">Flights</a>
 								      </li>
-								      <li role="presentation" class="active">
+								      <li role="presentation">
 								    	   <a href="#hotels" aria-controls="hotels" role="tab" data-toggle="tab">Hotels</a>
 								      </li>
 								      <li role="presentation">
@@ -130,7 +136,7 @@
 
 								   <!-- Tab panes -->
 									<div class="tab-content">
-									 <div role="tabpanel" class="tab-pane" id="flights">
+									 <div role="tabpanel" class="tab-pane active" id="flights">
 										<div class="row">
 											<div class="col-xxs-12 col-xs-6 mt">
 												<div class="input-field">
@@ -197,7 +203,7 @@
 										</div>
 									 </div>
 
-									 <div role="tabpanel" class="tab-pane active" id="hotels">
+									 <div role="tabpanel" class="tab-pane" id="hotels">
 									 	<div class="row">
 											<div class="col-xxs-12 col-xs-12 mt">
 												<div class="input-field">
@@ -344,55 +350,62 @@
 
 		</div>
 		
-
-		<div id="fh5co-contact" class="fh5co-section-gray">
+		<div id="fh5co-car" class="fh5co-section-gray">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
-						<h3>Contact Information</h3>
+						<h3>Liste des vols</h3>
 						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
 					</div>
 				</div>
-				<form action="#">
-					<div class="row animate-box">
-						<div class="col-md-6">
-							<h3 class="section-title">Our Address</h3>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-							<ul class="contact-info">
-								<li><i class="icon-location-pin"></i>198 West 21th Street, Suite 721 New York NY 10016</li>
-								<li><i class="icon-phone2"></i>+ 1235 2355 98</li>
-								<li><i class="icon-mail"></i><a href="#">info@yoursite.com</a></li>
-								<li><i class="icon-globe2"></i><a href="#">www.yoursite.com</a></li>
-							</ul>
-						</div>
-						<div class="col-md-6">
-							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Name">
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Email">
-									</div>
-								</div>
-								<div class="col-md-12">
-									<div class="form-group">
-										<textarea name="" class="form-control" id="" cols="30" rows="7" placeholder="Message"></textarea>
-									</div>
-								</div>
-								<div class="col-md-12">
-									<div class="form-group">
-										<input type="submit" value="Send Message" class="btn btn-primary">
-									</div>
-								</div>
+				<div class="row row-bottom-padded-md">
+				
+				<?PHP    
+					$count=0;      
+					  if (isset($_GET['id_destination'])){
+						 
+					$listeplaces = $Ville_arriveeC->rechercherDesByville($_GET['id_destination']);                          
+						 foreach($listeplaces as $place){	
+					   if($place['id_destination'] === $_GET['id_destination']) {$count=1;	
+								
+				  ?>
+
+					<div class="col-md-6 animate-box">					
+						<div class="car">
+							<div class="one-4" align="center">
+								<h3> <?PHP echo $place['ville_depart']; ?> - <?PHP echo $place['ville']; ?></h3>
+								<span class="price"><?PHP echo $place['compagnie']; ?></span>
+								<span class="price">le: <?PHP echo $place['date_depart']; ?></span>
+								<span class="price"><?PHP echo $place['prix']; ?><small> DT</small></span>
+							
+							<form method="GET" action="detailsVolf.php">
+                            	<input class="btn btn-warning btn-round" type="submit" name="détails" value="détails">
+                            	<input type="hidden" value=<?PHP echo $place['id_vol']; ?> name="id_vol">
+                            </form>
+							
 							</div>
-						</div>
-					</div>
-				</form>
+							<div class="one-1" style="background-image: url(../back/assets/img/<?php echo $place['image'] ?> ); ">
+							</div>
+						</div>				
+					</div>					
+					<?PHP
+                          }
+                          }
+						}
+					?>
+				<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box"><h2>
+					<?php
+						if($count === 0)
+               		 		{	
+                	echo("cette destination ne contient aucun vol pour le moment ");
+                    		 }
+                     ?>
+				</h2></div>
+				</div>
 			</div>
 		</div>
+
+		
 		<div id="fh5co-testimonial" style="background-image:url(images/img_bg_1.jpg);">
 		<div class="container">
 			<div class="row animate-box">
@@ -435,9 +448,6 @@
 			</div>
 		</div>
 	</div>
-	<div id="map" class="fh5co-map"></div>
-		<!-- END map -->
-
 		<footer>
 			<div id="footer">
 				<div class="container">
@@ -541,9 +551,6 @@
 	<!-- CS Select -->
 	<script src="js/classie.js"></script>
 	<script src="js/selectFx.js"></script>
-	<!-- Google Map -->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
-	<script src="js/google_map.js"></script>
 	
 	<!-- Main JS -->
 	<script src="js/main.js"></script>

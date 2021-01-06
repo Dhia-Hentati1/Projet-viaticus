@@ -2,6 +2,8 @@
     include_once '../Model/Vol.php';
     include_once '../Controller/VolC.php';
     include "./dashboard.php";
+    $VolC=new VolC();
+    $listeUsers=$VolC->AficherVol();
     $error = "";
 
     // create user
@@ -57,14 +59,14 @@
 
     
 ?>
-
+<script src="./script.js"></script>
 <!DOCTYPE html>
 <html lang="en">
 <body class="user-profile">
 
-      <div class="content"  style="margin-left: 25%; position:absolute; z-index:2; margin-top: 7% ;">
+      <div class="content"  style="margin-left: 30%; margin-right: 10%;">
         <div class="row">
-          <div class="col-md-11" style="margin-left: 30%;">
+          <div class="col-md-11">
             <div class="card">
               <div class="card-header">
                 <h5 class="title" align="center">Ajouter un vol</h5>
@@ -83,19 +85,19 @@
                     <div class="col-md-3 pr-1">
                       <div class="form-group">
                         <label>reférence  (disabled)</label>
-                        <input type="number" class="form-control" disabled="" placeholder="" name="id_vol" id="id_vol">
+                        <input type="number" class="form-control" disabled="" placeholder="" name="id_vol" id="id_vol" required>
                       </div>
                     </div>
                     <div class="col-md-3 px-1">
                       <div class="form-group">
                         <label>compagnie</label>
-                        <input type="text" class="form-control" placeholder="Username" name="compagnie" id="compagnie" >
+                        <input type="text" class="form-control" placeholder="Username" name="compagnie" id="compagnie" required>
                       </div>
                     </div>
                     <div class="col-md-4 pl-1">
                       <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" name="Email" id="Email" >
+                        <input type="email" class="form-control" name="Email" id="Email" required>
                       </div>
                     </div>
                   </div>
@@ -103,14 +105,14 @@
                     <div class="col-md-6 pr-1">
                       <div class="form-group">
                         <label>date de depart</label>
-                        <input type="date" class="form-control" name="date_depart" id="date_depart" >
+                        <input type="date" class="form-control" name="date_depart" id="date_depart" required>
                         <span class="validity"></span>
                       </div>
                     </div>
                     <div class="col-md-6 pl-1">
                       <div class="form-group">
                         <label>date d'arrivée</label>
-                        <input type="date" class="form-control" name="date_arrivee" id="date_arrivee" >
+                        <input type="date" class="form-control" name="date_arrivee" id="date_arrivee" required>
                       </div>
                     </div>
                   </div>
@@ -118,14 +120,14 @@
                     <div class="col-md-6 pr-1">
                       <div class="form-group">
                         <label>heure de depart</label>
-                        <input type="time" class="form-control" name="heure_depart" id="heure_depart" >
+                        <input type="time" class="form-control" name="heure_depart" id="heure_depart" required>
                         <span class="validity"></span>
                       </div>
                     </div>
                     <div class="col-md-6 pl-1">
                       <div class="form-group">
                         <label>heure d'arrivée</label>
-                        <input type="time" class="form-control" name="heure_arrivee" id="heure_arrivee" >
+                        <input type="time" class="form-control" name="heure_arrivee" id="heure_arrivee" required>
                       </div>
                     </div>
                   </div>
@@ -134,13 +136,24 @@
                     <div class="col-md-6 pr-1">
                       <div class="form-group">
                         <label>ville de depart</label>
-                        <input type="text" class="form-control" name="ville_depart" id="ville_depart">
+                        <input type="text" class="form-control" name="ville_depart" id="ville_depart" required>
                       </div>
                     </div>
                     <div class="col-md-6 pl-1">
                       <div class="form-group">
                         <label>Destination</label>
-                        <input type="text" class="form-control" name="ville_arrivee" id="ville_arrivee" >
+                        
+                        <select class="form-control" name="ville_arrivee" id="ville_arrivee" required>
+                          <option value="">  </option>
+                          <?PHP
+                            foreach($listeUsers as $user){		
+                          ?>
+                          <option value="<?PHP echo $user['id_destination']; ?>"><?PHP echo $user['ville']; ?></option>
+                          <?PHP
+                          }
+                        ?>
+                        </select>
+                        
                       </div>
                     </div>
                   </div>                 
@@ -148,7 +161,7 @@
                     <div class="col-md-6 pr-1">
                       <div class="form-group">
                         <label>Classe</label>
-                        <select class="form-control" name="classe" id="classe">
+                        <select class="form-control" name="classe" id="classe" required>
                           <option value="">  </option>
                           <option value="Economique"> économique </option>
                           <option value="Premiere classe" > Première classe </option>
@@ -159,7 +172,7 @@
                     <div class="col-md-6 pl-1">
                       <div class="form-group">
                         <label>Prix</label>
-                        <input type="float" class="form-control" name="prix" id="prix">
+                        <input type="float" class="form-control" name="prix" id="prix" required>
                       </div>
                     </div>
                   </div> 
@@ -167,6 +180,7 @@
                   <div class="form-group">
                     <div style="text-align:center" data-align="center" >
                     <input  id="submit" class="btn btn-warning" type="submit" value="Ajouter" >
+                    <INPUT TYPE="reset" NAME="reset" VALUE="Effacer" class="btn btn-warning">  
                     
                     </div>
                   </div>
@@ -177,8 +191,6 @@
           </div>
         </div>
       </div>
- <?php
-   include "./footer.php";
-  ?>
+      
 </body>
 </html>

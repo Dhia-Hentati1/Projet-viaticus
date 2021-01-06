@@ -24,8 +24,7 @@
 					'classe' => $Vol->getClasse(),
 					'prix' => $Vol->getPrix(),
 				]);			
-			
-					
+								
 		}
 			
 		function AfficherVol(){
@@ -43,6 +42,21 @@
 			}	
 		}
 
+		function AficherVol(){
+			
+			$sql="SELECT * FROM ville_arrivee as va
+			LEFT join vol as v
+			on v.ville_arrivee = va.id_destination
+			GROUP BY va.ville";
+			$db = config::getConnexion();
+			try{
+				$liste = $db->query($sql);
+				return $liste;
+			}
+			catch (Exception $e){
+				die('Erreur: '.$e->getMessage());
+			}	
+		}
 			
 		function SupprimerVol($id_vol){
 			$sql="DELETE FROM vol WHERE id_vol= :id_vol";
@@ -92,7 +106,10 @@
 		}
 		
 		function RecupererVol($id_vol){
-			$sql="SELECT * from vol where id_vol=$id_vol";
+			$sql="SELECT * from vol as v
+			inner join ville_arrivee as va 
+			on v.ville_arrivee = va.id_destination
+			where v.id_vol=$id_vol";
 			$db = config::getConnexion();
 			try{
 				$query=$db->prepare($sql);
@@ -115,7 +132,6 @@
 			try{
 				$query=$db->prepare($sql);
 				$query->execute();
-
 				$user=$query->fetch();
 				return $user;
 			}
@@ -124,12 +140,12 @@
 			}
 		}
 
-		function TriVol(){
+		function TriVol($cle){
 			
 			$sql="SELECT * FROM vol as v
 			inner join ville_arrivee as va 
 			on v.ville_arrivee = va.id_destination			
-			ORDER BY prix ";
+			ORDER BY $cle ";
 			$db = config::getConnexion();
 			try{
 				$liste = $db->query($sql);
@@ -138,8 +154,6 @@
 			catch (Exception $e){
 				die('Erreur: '.$e->getMessage());
 			}	
-		}
-	
+		}	
 	}
-
 ?>

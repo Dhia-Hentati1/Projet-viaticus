@@ -2,7 +2,9 @@
 	include "../controller/volC.php";
 	include_once '../Model/vol.php';
   include "./dashboard.php";
-	$VolC = new VolC();
+  $VolC = new VolC();
+  $listedes=$VolC->AficherVol();
+  
 	$error = "";
 	
 	if (
@@ -44,23 +46,24 @@
 			);
 			
             $VolC->ModifierVol($user, $_GET['id_vol']);
-            header('Location:AfficherVol.php');
+            //header('Location:AfficherVol.php');
         }
         else
             $error = "Missing information";
 	}
-
 ?>
+<script src="./script.js"></script>
 <!DOCTYPE html>
 <html lang="en">
 
 <body class="">
   
-      <div class="content"  style="margin-left: 25%; position:absolute; z-index:2; margin-top: 7% ;">
+      <div class="content"  style="margin-left: 35%; margin-right: 15%;">
         <div class="row">
-          <div class="col-md-11" style="margin-left: 70%;">
-          
+          <div class="col-md-11" >
+          <div id="erreur"></div>
             <div class="card">
+            
               <div class="card-header text-center">
               <div align="left">
                  <button class="btn btn-warning btn-fab btn-icon btn-round ">
@@ -133,18 +136,30 @@
                             <tr>
                               <td>Ville d'arrivée :</td>
                               <td class="text-center"></td>
-                              <td class="text-center"><input type="text" id="ville_arrivee" class="text-center form-control" name="ville_arrivee"   value = "<?php echo $user['ville_arrivee']; ?>"></td>
+                              <td class="text-center">
+                              <select class="form-control" name="ville_arrivee" id="ville_arrivee"  required>
+                                <option value="<?php echo $user['ville_arrivee']; ?>"><?php echo $user['ville']; ?></option>
+                                  <?PHP
+                                    foreach($listedes as $des){	
+                                      if( $user['ville']!=$des['ville'])	{
+                                  ?>
+                                <option value="<?PHP echo $des['id_destination']; ?>"><?PHP echo $des['ville']; ?></option>
+                                  <?PHP
+                                   }}
+                                  ?>
+                              </select>
+                              </td>
                             </tr>
                             <tr>
 
                               <td>Classe :</td>
                               <td class="text-center"></td>
                               <td class="text-center">
-                              <select class="form-control" name="classe" id="classe">
-                                <option value= "<?php echo $user['classe']; ?>" >  </option>
-                                <option value="Economique" selected> économique </option>
-                                <option value="Premiere classe" > Première classe </option>
-                                <option value="classe affaires"> classe affaires </option>
+                              <select class="form-control" name="classe" id="classe" required>
+                                <option value= "<?php echo $user['classe']; ?>" > <?php echo $user['classe']; ?> </option>
+                                <?php if($user['classe']!="Economique"){?><option value="Economique"> économique </option><?php }?>
+                                <?php if($user['classe']!="Premiere classe"){?><option value="Premiere classe" > Première classe </option><?php }?>
+                                  <?php if($user['classe']!="classe affaires"){?><option value="classe affaires"> classe affaires </option><?php }?>
                               </select>
                               </td>
                             </tr>
@@ -161,7 +176,7 @@
                               <td>
                               <div class="form-group">
                                 <div style="text-align:center" data-align="center" >
-                                <input type="submit" value="Modifier" class="btn btn-warning" name = "modifier"> 
+                                <input type="submit" value="Modifier" class="btn btn-warning" > 
                                 </div>
                                 </div>
                               </td>
@@ -179,7 +194,4 @@
         </div>
       </div>
 </body>
-<?php
-   include "./footer.php";
-  ?>
 </html>

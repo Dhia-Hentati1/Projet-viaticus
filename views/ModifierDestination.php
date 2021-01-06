@@ -26,7 +26,7 @@
 			);
 			
             $Ville_arriveeC->ModifierDestination($place, $_GET['id_destination']);
-            header('Location:AfficherDestination.php');
+            //header('Location:AfficherDestination.php');
         }
         else
             $error = "Missing information";
@@ -37,9 +37,9 @@
 <html lang="en">
 
 <body>
-      <div class="content" style="margin-left: 25%; position:absolute; z-index:2; margin-top: 7% ;">
+      <div class="content" style="margin-left: 25%; margin-right: 15%;">
         <div class="row">
-          <div class="col-md-12 " style="margin-left: 60%;">
+          <div class="col-md-12 ">
             <div class="card " >
               <div class="card-header text-center">
               Modifier destination
@@ -54,9 +54,10 @@
               <div class="card-body">
                 <div class="table-responsive table-upgrade">
                   
-          
+                       
                         <div>
                       <?php
+                         $rech="";
                         if (isset($_GET['id_destination'])){
                         $place = $Ville_arriveeC->RecupererDestination($_GET['id_destination']);
                       ?>
@@ -79,25 +80,29 @@
                             <tr>
                               <td>Ville :</td>
                               <td class="text-center"></td>
-                              <td class="text-center"><input type="text" id="ville" class="text-center form-control" name="ville" value = "<?php echo $place['ville']; ?>"></td>
+                              <td class="text-center"><input type="text" id="ville" class="text-center form-control" name="ville" value = "<?php echo $place['ville']; ?>" required></td>
                             </tr>
                             <tr>
                               <td>Pays:</td>
                               <td class="text-center"></td>
-                              <td class="text-center"><input type="text" id="pays" class="text-center form-control" name="pays"   value = "<?php echo $place['pays']; ?>"></td>
+                              <td class="text-center"><input type="text" id="pays" class="text-center form-control" name="pays"   value = "<?php echo $place['pays']; ?>" required></td>
                             </tr>
                             <tr>
                               <td>Image :</td>
                               <td class="text-center"></td>
                               <td class="text-center">
-                              <label for="image" style="cursor:pointer; border:1px solid #999999; background-color:#eeeeee; padding:1px 3px 1px 3px; color:#333333;">Ajouter photo</label>
-                                <input type="file" name="image" id="image" value = "<?php echo $place['image']; ?>" style="position:absolute; top:-20000px;"/>
-                              </td>
+                                  <div class="col-md-6 pl-1">                                                                                     
+                                  <input type="file"  name="image" id="image" accept=".png, .jpg, .jpeg" value="<?php echo $place['image']; ?>" onchange="document.getElementById('input_text_file').textContent = this.value" />                                 
+                                  <label for="image" type="text"></label> <span id="input_text_file"></span>                                  
+                                  </div>                                  
+                                    </td>
                             </tr>  
                             <tr>
                               <td>Description:</td>
                               <td class="text-center"></td>
-                              <td class="text-center"><input type="text" id="description" class="text-center form-control" name="description"   value = "<?php echo $place['description']; ?>"  ></td>
+                              <td class="text-center">
+                              <textarea class="form-control" name="description"   id="description" value = "<?php echo $place['description']; ?>" required><?php echo $place['description']; ?></textarea>
+                              </td>
                             </tr>                                                 
                             <tr>
                               <td class="text-center"></td>
@@ -128,7 +133,4 @@
     </div>
   </div>
 </body>
-<?php
-   include "./footer.php";
-  ?>
 </html>

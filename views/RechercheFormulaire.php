@@ -14,7 +14,7 @@
 
 <body class="">
  
-      <div class="content" style="margin-left: 25%; position:absolute; z-index:2; margin-top: 7% ;">
+      <div class="content" style="margin-left: 25%; margin-right: 5%;">
         <div class="row">
           <div class="col-md-12">
             <div class="card card-upgrade">
@@ -33,20 +33,18 @@
                 <div class="table-responsive table-upgrade">
                   <table class="table">
                     <?PHP
-				            if (isset($_GET['compagnie']) &&  isset($_GET['prix'])&&  isset($_GET['ville'])&&  isset($_GET['date_depart'])&&  isset($_GET['classe'])){
-                      $listeplaces = $Ville_arriveeC->rechercherSelonFormulaire($_GET['compagnie'], $_GET['prix'], $_GET['ville'], $_GET['date_depart'], $_GET['classe']);                          
-                      //$s=count($place);
-                      //echo($s);  
+                    $count=0;
+                    $rech=$_GET['recherche'];                      
+                      $listeplaces = $Ville_arriveeC->rechercherSelonFormulaire($rech);                                                
                       if($listeplaces) {
                        foreach($listeplaces as $place){
-                     if( (($place['prix']) <= ($_GET['prix'])) && 
-                     ($place['compagnie'] === $_GET['compagnie']) &&
-                     ($place['ville'] === $_GET['ville']) &&
-                     ($place['date_depart'] <= $_GET['date_depart']) &&
-                     ($place['classe'] === $_GET['classe']) ) {	
-                      
-                    ?>
-                  
+                     if( 
+                     ($place['compagnie'] == ($rech)) OR
+                     ($place['ville'] == ($rech)) OR
+                     ($place['prix'] >= ($rech)) OR
+                     ($place['classe'] == ($rech)) ) {
+                       $count=1;	                    
+                    ?>                 
                     <thead>                     
                       <th>Compagnie</th>                    
                       <th>date Depart</th>
@@ -87,11 +85,11 @@
                     
                     <?PHP
                           }}}
-                          else {
-                            echo("ces critères ne correspondent à aucun vol");
+                          if($count===0) {
+                            echo("Ce mot clé ne correspondent à aucun vol");
                              
                           }
-                        }
+                        
                      ?>
                   </table>
                     </div>
@@ -102,7 +100,4 @@
         </div>
       </div>
 </body>
-<?php
-   include "./footer.php";
-  ?>
 </html>

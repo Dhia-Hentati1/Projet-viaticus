@@ -2,8 +2,6 @@
 	include "../controller/VolC.php";
   include "./dashboard.php";
 	$VolC=new VolC();
-
-
 ?>
 
 <!DOCTYPE html>
@@ -11,9 +9,9 @@
 
 <body>
   
-      <div class="content" style="margin-left: 25%; position:absolute; z-index:2; margin-top: 7% ;">
+      <div class="content" style="margin-left: 35%;  margin-right: 15%;  ;">
         <div class="row">
-          <div class="col-md-12" style="margin-left: 30%;">
+          <div class="col-md-12" >
             <div class="card card-upgrade">
               <div class="card-header text-center">
                 <h4 class="card-title">Détails du Vol</h3>
@@ -115,7 +113,7 @@
                           }
                           else 
                           {
-                            echo($_GET['id_vol'] .'   not found' );
+                            echo('Ce identifiant du vol ( '. $_GET['id_vol'] .')   est non existant' );
                           }
                         }
                      ?>
@@ -131,7 +129,4 @@
   </div>
   
 </body>
-<?php
-   include "./footer.php";
-  ?>
 </html>

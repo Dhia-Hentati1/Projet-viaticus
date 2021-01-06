@@ -11,26 +11,38 @@
 
 <body >
 <div class="wrapper ">
-      <div class="content" style="margin-left: 25%; position:absolute; z-index:2; margin-top: 7% ;">
+      <div class="content" style="margin-left: 25%; margin-right: 0%; ">
         <div class="row">
           <div class="col-md-11" >
             <div class="card">
-              <div class="card-header ">                       
-              <h4 class="card-title" align="center"> Destination 
-                 </h4>             
+            <div class="card-header ">                       
+              <h4 class="card-title" align="center"> Destination </h4>             
 
-                 <div align="right">
-                 <button class="btn btn-warning btn-fab btn-icon btn-round ">
+              <div align="center">
+              <table>
+              <th class=" text-primary">Chercher un vol</th>
+              <th>
+              
+              <form method="GET" action="RechercheFormulaire.php" >                  
+                  <div class="input-group  ">                 
+                        <input type="text" class="btn  btn-warning btn-outline-warning" placeholder="" name="recherche" id="recherche">
+                    <div class="input-group-append ">
+                      <button class="btn btn-warning   btn-round ui-1_zoom-bold now-ui-icons" ></button>                                     
+                    </div>
+                  </div>             
+              </form>
+
+                </th>
+                </table> 
+                </div>
+                <div align="right">
+                <button class="btn btn-warning btn-fab btn-icon btn-round ">
                    <a href="./AjouterDestination.php">
                      <i class="now-ui-icons ui-1_simple-add" ></i> 
                    </a>   
-                 </button>
-                 <button class="btn btn-warning btn-fab btn-icon btn-round ">
-                   <a href="./formulaireDes.php">
-                     <i class="now-ui-icons ui-1_zoom-bold" ></i> 
-                   </a>   
-                 </button>
-              </div>
+                 </button>  
+                          
+            </div>
 
               </div>
               <div class="card-body">
@@ -109,9 +121,7 @@
     
 
   <!--   Core JS Files   -->
-  <?php
-   include "./footer.php";
-  ?>
+ 
 </div>
 </body>
 

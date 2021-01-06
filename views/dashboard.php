@@ -4,11 +4,11 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="../back/assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../back/assets/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="../back/assets/img/logo.png">
+  <link rel="icon" type="image/png" href="../back/assets/img/logo.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Now UI Dashboard by Creative Tim
+    Viaticus
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -138,7 +138,7 @@
     <!-- End Navbar -->
 
 
-  <div class="panel-header panel-header-lg">
+  <div class="panel-header panel-header-sm">
     </div>
  
 </div>

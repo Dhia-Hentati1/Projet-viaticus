@@ -1,4 +1,8 @@
-
+<?PHP
+	include "../controller/destinationC.php";
+	$Ville_arriveeC=new Ville_arriveeC();
+	$listeplaces=$Ville_arriveeC->AfficherDestination();
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -78,26 +82,17 @@
 			<div class="container">
 				<div class="nav-header">
 					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-					<h1 id="fh5co-logo"><a href="index.html"><i class="icon-airplane"></i>Travel</a></h1>
+					<h1 id="fh5co-logo"><a href="acceuil.php">
+					<img class=" now-ui-icons " src="../back/assets/img/logo.png" alt="..." width="50" align="left"> 
+					Viaticus</a></h1>
 					<!-- START #fh5co-menu-wrap -->
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
-							<li><a href="index.html">Home</a></li>
+							<li><a href="accueil.php">Accueil</a></li>
 							<li>
-								<a href="vacation.html" class="fh5co-sub-ddown">Vacations</a>
-								<ul class="fh5co-sub-menu">
-									<li><a href="#">Family</a></li>
-									<li><a href="#">CSS3 &amp; HTML5</a></li>
-									<li><a href="#">Angular JS</a></li>
-									<li><a href="#">Node JS</a></li>
-									<li><a href="#">Django &amp; Python</a></li>
-								</ul>
+								<a href="destination.php" class="fh5co-sub-ddown">Destination</a>								
 							</li>
-							<li><a href="flight.html">Flights</a></li>
-							<li class="active"><a href="hotel.html">Hotel</a></li>
-							<li><a href="car.html">Car</a></li>
-							<li><a href="blog.html">Blog</a></li>
-							<li><a href="contact.html">Contact</a></li>
+							<li><a href="flight.php">Vols</a></li>						
 						</ul>
 					</nav>
 				</div>
@@ -108,7 +103,7 @@
 	
 		<div class="fh5co-hero">
 			<div class="fh5co-overlay"></div>
-			<div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(images/cover_bg_5.jpg);">
+			<div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(images/cover_bg_3.jpg);">
 				<div class="desc">
 					<div class="container">
 						<div class="row">
@@ -118,10 +113,10 @@
 
 								  <!-- Nav tabs -->
 								   <ul class="nav nav-tabs" role="tablist">
-								      <li role="presentation">
+								      <li role="presentation" class="active">
 								      	<a href="#flights" aria-controls="flights" role="tab" data-toggle="tab">Flights</a>
 								      </li>
-								      <li role="presentation" class="active">
+								      <li role="presentation">
 								    	   <a href="#hotels" aria-controls="hotels" role="tab" data-toggle="tab">Hotels</a>
 								      </li>
 								      <li role="presentation">
@@ -131,7 +126,7 @@
 
 								   <!-- Tab panes -->
 									<div class="tab-content">
-									 <div role="tabpanel" class="tab-pane" id="flights">
+									 <div role="tabpanel" class="tab-pane active" id="flights">
 										<div class="row">
 											<div class="col-xxs-12 col-xs-6 mt">
 												<div class="input-field">
@@ -198,7 +193,7 @@
 										</div>
 									 </div>
 
-									 <div role="tabpanel" class="tab-pane active" id="hotels">
+									 <div role="tabpanel" class="tab-pane" id="hotels">
 									 	<div class="row">
 											<div class="col-xxs-12 col-xs-12 mt">
 												<div class="input-field">
@@ -345,98 +340,59 @@
 
 		</div>
 		
-
-		<div id="fh5co-tours" class="fh5co-section-gray">
+		<div id="fh5co-car" class="fh5co-section-gray">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
-						<h3>Popular hotel &amp; hostel destinations</h3>
+						<h3>Liste des vols</h3>
 						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
 					</div>
 				</div>
 				<div class="row row-bottom-padded-md">
-					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-1.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
-							<div class="desc">
-								<span></span>
-								<h3>New York</h3>
-								<span>3 nights</span>
-								<span class="price">$1,000</span>
-								<a class="btn btn-primary btn-outline" href="#">Book Now <i class="icon-arrow-right22"></i></a>
+				<?PHP
+					$count=0;
+					$rech=$_GET['recherche'];   					        
+                      $listeplaces = $Ville_arriveeC->rechercherSelonFormulaire($rech);                                                
+                      if($listeplaces) {
+                       foreach($listeplaces as $place){
+                     if( 
+                     ($place['compagnie'] == ($rech)) OR
+                     ($place['ville'] == ($rech)) OR
+                     ($place['prix'] >= ($rech)) OR
+                     ($place['classe'] == ($rech)) ) {
+                       $count=1;                    
+                    ?> 
+					<div class="col-md-6 animate-box">					
+						<div class="car">
+							<div class="one-4" align="center">
+								<h3> <?PHP echo $place['ville_depart']; ?> - <?PHP echo $place['ville']; ?></h3>
+								<span class="price"><?PHP echo $place['compagnie']; ?></span>
+								<span class="price">le: <?PHP echo $place['date_depart']; ?></span>
+								<span class="price"><?PHP echo $place['prix']; ?><small> DT</small></span>
+							
+							<form method="GET" action="detailsVolf.php">
+                            	<input class="btn btn-warning btn-round" type="submit" name="détails" value="détails">
+                            	<input type="hidden" value=<?PHP echo $place['id_vol']; ?> name="id_vol">
+                            </form>
+							
 							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-2.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
-							<div class="desc">
-								<span></span>
-								<h3>Philippines</h3>
-								<span>4 nights</span>
-								<span class="price">$1,000</span>
-								<a class="btn btn-primary btn-outline" href="#">Book Now <i class="icon-arrow-right22"></i></a>
+							<div class="one-1" style="background-image: url(../back/assets/img/<?php echo $place['image'] ?> ); ">
 							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-3.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
-							<div class="desc">
-								<span></span>
-								<h3>Hongkong</h3>
-								<span>2 nights</span>
-								<span class="price">$1,000</span>
-								<a class="btn btn-primary btn-outline" href="#">Book Now <i class="icon-arrow-right22"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-1.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
-							<div class="desc">
-								<span></span>
-								<h3>New York</h3>
-								<span>3 nights</span>
-								<span class="price">$1,000</span>
-								<a class="btn btn-primary btn-outline" href="#">Book Now <i class="icon-arrow-right22"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-2.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
-							<div class="desc">
-								<span></span>
-								<h3>Philippines</h3>
-								<span>4 nights</span>
-								<span class="price">$1,000</span>
-								<a class="btn btn-primary btn-outline" href="#">Book Now <i class="icon-arrow-right22"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-3.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
-							<div class="desc">
-								<span></span>
-								<h3>Hongkong</h3>
-								<span>2 nights</span>
-								<span class="price">$1,000</span>
-								<a class="btn btn-primary btn-outline" href="#">Book Now <i class="icon-arrow-right22"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12 animate-box">
-						<h2 class="heading-title">Travel Booking guide to book a perfect hotel</h2>
-					</div>
-					<div class="col-md-6 animate-box">
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Pellentesque habitant morbi tristique senectus et netus ett mauada fames ac turpis egestas. Etiam euismod tempor leo, in suscipit urna condimentum sed. Vivamus augue enim, consectetur ac interdum a, pulvinar ac massa. Nullam malesuada congue </p>
-						<p>Pellentesque habitant morbi tristique senectus et netus ett mauada fames ac turpis egestas. Etiam euismod tempor leo, in suscipit urna condimentum sed. Vivamus augue enim, consectetur ac interdum a, pulvinar ac massa. Nullam malesuada congue </p>
-						<a href="#">Read More <i class="icon-arrow-right22"></i></a>
-					</div>
-					<div class="col-md-6 animate-box">
-						<img class="img-responsive" src="images/cover_bg_2.jpg" alt="travel">
-					</div>
+						</div>				
+					</div>					
+					<?PHP
+                          }}}
+                          if($count===0) {
+                            echo("Ce mot clé ne correspondent à aucun vol");
+                             
+                          }
+                        
+                     ?>
 				</div>
 			</div>
 		</div>
+
+		
 		<div id="fh5co-testimonial" style="background-image:url(images/img_bg_1.jpg);">
 		<div class="container">
 			<div class="row animate-box">

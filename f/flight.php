@@ -84,26 +84,17 @@
 			<div class="container">
 				<div class="nav-header">
 					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-					<h1 id="fh5co-logo"><a href="index.html"><i class="icon-airplane"></i>Travel</a></h1>
+					<h1 id="fh5co-logo"><a href="acceuil.php">
+					<img class=" now-ui-icons " src="../back/assets/img/logo.png" alt="..." width="50" align="left"> 
+					Viaticus</a></h1>
 					<!-- START #fh5co-menu-wrap -->
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
-							<li><a href="index.html">Home</a></li>
+							<li><a href="accueil.php">Accueil</a></li>
 							<li>
-								<a href="vacation.html" class="fh5co-sub-ddown">Vacations</a>
-								<ul class="fh5co-sub-menu">
-									<li><a href="#">Family</a></li>
-									<li><a href="#">CSS3 &amp; HTML5</a></li>
-									<li><a href="#">Angular JS</a></li>
-									<li><a href="#">Node JS</a></li>
-									<li><a href="#">Django &amp; Python</a></li>
-								</ul>
+								<a href="destination.php" class="fh5co-sub-ddown">Destination</a>								
 							</li>
-							<li class="active"><a href="flight.html">Flights</a></li>
-							<li><a href="hotel.html">Hotel</a></li>
-							<li><a href="car.html">Car</a></li>
-							<li><a href="blog.html">Blog</a></li>
-							<li><a href="contact.html">Contact</a></li>
+							<li><a href="flight.php">Vols</a></li>						
 						</ul>
 					</nav>
 				</div>
@@ -351,131 +342,70 @@
 
 		</div>
 		
-
-		<div id="fh5co-tours" class="fh5co-section-gray">
+		<div id="fh5co-car" class="fh5co-section-gray">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
-						<h3>Book A Flight</h3>
+						<h3>Liste des vols</h3>
 						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
 					</div>
 				</div>
-				<div class="row row-bottom-padded-md">
-					<div class="col-md-12 animate-box">
-						<h2 class="heading-title">Todays Flight Deal</h2>
+
+				<table align="center">
+				<th>
+				<form method="GET" action="flightTri.php" >                 
+					<div class="col-xxs-12 col-xs-8 mt">
+					<div class="input-field">
+					  <select class="btn   " name="tri" id="tri" >
+                              <option value="compagnie">compagnie</option>
+                              <option value="prix">prix </option>
+                              <option value="ville_depart" > ville_depart </option>
+                              <option value="ville_arrivee"> ville_arrivee </option>
+                      </select> 
 					</div>
-					<div class="col-md-6 animate-box">
-						<div class="row">
-							<div class="col-md-12">
-								<h4>Better Deals, More Abilities</h4>
-								<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-							</div>
-							<div class="col-md-12">
-								<h4>Keep up with the news of your airline</h4>
-								<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-							</div>
-							<div class="col-md-12">
-								<h4>In-Flight Experience</h4>
-								<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-							</div>
-						</div>
 					</div>
-					<div class="col-md-6 animate-box">
-						<img class="img-responsive" src="images/cover_bg_3.jpg" alt="travel">
-						<a href="#" class="flight-book">
-							<div class="plane-name">
-								<span class="p-flight">United States Airways</span>
-							</div>
-							<div class="desc">
-								<div class="left">
-									<h4>HK-MNL</h4>
-									<span>Dec 20 - Dec29</span>
-								</div>
-								<div class="right">
-									<span class="price">
-										<i class="icon-arrow-down22"></i>
-										$1000
-									</span>
-								</div>
-							</div>
-						</a>
-						<a href="#" class="flight-book">
-							<div class="plane-name">
-								<span class="p-flight">Qatar Airways</span>
-							</div>
-							<div class="desc">
-								<div class="left">
-									<h4>HK-MNL</h4>
-									<span>Dec 20 - Dec29</span>
-								</div>
-								<div class="right">
-									<span class="price">
-										<i class="icon-arrow-down22"></i>
-										$790
-									</span>
-								</div>
-							</div>
-						</a>
-						<a href="#" class="flight-book">
-							<div class="plane-name">
-								<span class="p-flight">Philippine Airline</span>
-							</div>
-							<div class="desc">
-								<div class="left">
-									<h4>MNL-HK</h4>
-									<span>Dec 20 - Dec29</span>
-								</div>
-								<div class="right">
-									<span class="price">
-										<i class="icon-arrow-down22"></i>
-										$500
-									</span>
-								</div>
-							</div>
-						</a>
-						<a href="#" class="flight-book">
-							<div class="plane-name">
-								<span class="p-flight">China Airways</span>
-							</div>
-							<div class="desc">
-								<div class="left">
-									<h4>HK-LAS</h4>
-									<span>Dec 20 - Dec29</span>
-								</div>
-								<div class="right">
-									<span class="price">
-										<i class="icon-arrow-down22"></i>
-										$900
-									</span>
-								</div>
-							</div>
-						</a>
+					<div class="col-xxs-10 col-xs-4 ">
+					<div class="input-field" >
+                      <button class="btn btn-warning btn-round now-ui-icons form-control">
+                      <a href="./AfficherVolR.php">
+                        <i class="now-ui-icons " >Trier</i> 
+                      </a>   
+                      </button>   
+                    </div>
 					</div>
-				</div>
+                </form>
+				</th>
+				</table>
 				<div class="row row-bottom-padded-md">
 					<?PHP
                         foreach($listeUsers as $user){		
                     ?>
-					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-1.jpg" class="img-responsive">
+					<div class="col-md-6 animate-box">					
+						<div class="car">
+							<div class="one-4" align="center">
+								<h3> <?PHP echo $user['ville_depart']; ?> - <?PHP echo $user['ville']; ?></h3>
+								<span class="price"><?PHP echo $user['compagnie']; ?></span>
+								<span class="price">le: <?PHP echo $user['date_depart']; ?></span>
+								<span class="price"><?PHP echo $user['prix']; ?><small> DT</small></span>
 							
-						<div class="desc">
-								<span></span>
-								<h3> <?PHP echo $user['ville_depart']; ?> - <?PHP echo $user['ville']; ?></h3>								
-								<span><?PHP echo $user['compagnie']; ?></span>
-								<span>le: <?PHP echo $user['date_depart']; ?></span>
-								<span class="price"><?PHP echo $user['prix']; ?> DT</span>
-								<a class="btn btn-primary btn-outline" href="#">Book Now <i class="icon-arrow-right22"></i></a>
+							<form method="GET" action="detailsVolf.php">
+                            	<input class="btn btn-warning btn-round" type="submit" name="détails" value="détails">
+                            	<input type="hidden" value=<?PHP echo $user['id_vol']; ?> name="id_vol">
+                            </form>
+							
 							</div>
-						</div>
-					</div>
+							<div class="one-1" style="background-image: url(../back/assets/img/<?php echo $user['image'] ?> ); ">
+							</div>
+						</div>				
+					</div>					
 					<?PHP
                     }
                     ?>
-					
 				</div>
 			</div>
 		</div>
+
+		
 		<div id="fh5co-testimonial" style="background-image:url(images/img_bg_1.jpg);">
 		<div class="container">
 			<div class="row animate-box">

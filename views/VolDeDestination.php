@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-      <div class="content" style="margin-left: 25%; position:absolute; z-index:2; margin-top: 7% ;">
+      <div class="content" style="margin-left: 25%; margin-right: 5%;">
         <div class="row">
           <div class="col-md-12">
             <div class="card card-upgrade">
@@ -27,10 +27,18 @@
               </div>
               <div class="card-body">
                 <div class="table-responsive table-upgrade">
-                  <table class="table">
-
                   
-
+                    <?PHP
+                      $count=0;
+				            if (isset($_GET['id_destination'])){
+                      $listeplaces = $Ville_arriveeC->rechercherDesByville($_GET['id_destination']);
+                                           
+                               foreach($listeplaces as $place){
+				             if($place['id_destination'] === $_GET['id_destination']) {	
+                     $count=1;
+                     
+		            	?>
+                  <table class="table">
                     <thead>                     
                       <th>Compagnie</th>                    
                       <th>date Depart</th>
@@ -43,16 +51,6 @@
                       <th class="text-center">Action</th>
                       <th></th>
                     </thead>
-                    <?PHP
-                      
-				            if (isset($_GET['id_destination'])){
-                      $listeplaces = $Ville_arriveeC->rechercherDesByville($_GET['id_destination']);                          
-                      //$s=count($place);
-                      //echo($s);  
-                               foreach($listeplaces as $place){
-				             if($place['id_destination'] === $_GET['id_destination']) {	
-                      
-		            	?>
                     <tbody>
                       <tr>                     
                       <td class="text-center"><?PHP echo $place['compagnie']; ?></td>
@@ -79,11 +77,11 @@
                       
                     </tbody>
                     <?PHP
-                          }
-                          else {
-                            echo($_GET['id_destination'] .'   not found' );
-                          }}
-                        }
+                          }}}
+                        if($count===0)
+                        {
+                        echo('cette destination ne contient pas de vol' );}
+                        
                      ?>
                   </table>
                 </div>
@@ -93,7 +91,4 @@
         </div>
       </div>
 </body>
-<?php
-   include "./footer.php";
-  ?>
 </html>

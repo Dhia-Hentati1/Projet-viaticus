@@ -20,7 +20,7 @@
 		}
 			
 		function AfficherDestination(){			
-			$sql="SELECT * FROM ville_arrivee";
+			$sql="SELECT * FROM ville_arrivee ";
 			$db = config::getConnexion();
 			try{
 				$liste = $db->query($sql);
@@ -82,51 +82,30 @@
 			}
 		}
 		
-		/*function RechercherDestination($id_destination){
-			$sql="SELECT * from ville_arrivee where id_destination like '$id_destination' ";
-			$db = config::getConnexion();
-			try{
-				$query=$db->prepare($sql);
-				$query->execute();
-
-				$user=$query->fetch();
-				return $user;
-			}
-			catch (Exception $e){
-				die('Erreur: '.$e->getMessage());
-			}
-		}*/
-
 		function rechercherDesByville($id_destination){
 			$sql="SELECT * from ville_arrivee as va
 			inner join vol as v 
 			on va.id_destination = v.ville_arrivee
 			where v.ville_arrivee like '$id_destination'";
-			$db = config::getConnexion();
-			
-			try{
-				
+			$db = config::getConnexion();			
+			try{				
 				$place = $db->query($sql);
-				return $place;
-				
+				return $place;				
 			}
 			catch (Exception $e){
 				die('Erreur: '.$e->getMessage());
 			}
 		}
 
-		function rechercherSelonFormulaire($compagnie, $prix, $ville, $date_depart, $classe){
+		function rechercherSelonFormulaire($rech){
 			$sql="SELECT * from ville_arrivee as va
 			inner join vol as v 
 			on va.id_destination = v.ville_arrivee			
-			where v.compagnie like '$compagnie' AND v.prix <= $prix  AND va.ville like '$ville' AND v.date_depart <= '$date_depart' AND v.classe like '$classe'" ;
-			$db = config::getConnexion();
-			
-			try{
-				
+			where v.compagnie like '$rech' OR va.ville like '$rech' OR v.classe like '$rech' or v.prix >= '$rech'";
+			$db = config::getConnexion();			
+			try{				
 				$place = $db->query($sql);
-				return $place;
-				
+				return $place;				
 			}
 			catch (Exception $e){
 				die('Erreur: '.$e->getMessage());

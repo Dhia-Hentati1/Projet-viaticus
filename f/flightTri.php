@@ -1,4 +1,10 @@
+<?PHP
+	include "../controller/volC.php";
+	
+	$VolC=new VolC();
 
+	$listeUsers=$VolC->TriVol($_GET['tri']);
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -78,26 +84,17 @@
 			<div class="container">
 				<div class="nav-header">
 					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-					<h1 id="fh5co-logo"><a href="index.html"><i class="icon-airplane"></i>Travel</a></h1>
+					<h1 id="fh5co-logo"><a href="acceuil.php">
+					<img class=" now-ui-icons " src="../back/assets/img/logo.png" alt="..." width="50" align="left"> 
+					Viaticus</a></h1>
 					<!-- START #fh5co-menu-wrap -->
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
-							<li><a href="index.html">Home</a></li>
+							<li><a href="accueil.php">Accueil</a></li>
 							<li>
-								<a href="vacation.html" class="fh5co-sub-ddown">Vacations</a>
-								<ul class="fh5co-sub-menu">
-									<li><a href="#">Family</a></li>
-									<li><a href="#">CSS3 &amp; HTML5</a></li>
-									<li><a href="#">Angular JS</a></li>
-									<li><a href="#">Node JS</a></li>
-									<li><a href="#">Django &amp; Python</a></li>
-								</ul>
+								<a href="destination.php" class="fh5co-sub-ddown">Destination</a>								
 							</li>
-							<li><a href="flight.html">Flights</a></li>
-							<li><a href="hotel.html">Hotel</a></li>
-							<li><a href="car.html">Car</a></li>
-							<li class="active"><a href="blog.html">Blog</a></li>
-							<li><a href="contact.html">Contact</a></li>
+							<li><a href="flight.php">Vols</a></li>						
 						</ul>
 					</nav>
 				</div>
@@ -108,7 +105,7 @@
 	
 		<div class="fh5co-hero">
 			<div class="fh5co-overlay"></div>
-			<div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(images/cover_bg_1.jpg);">
+			<div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(images/cover_bg_3.jpg);">
 				<div class="desc">
 					<div class="container">
 						<div class="row">
@@ -345,110 +342,71 @@
 
 		</div>
 		
-
-		<div id="fh5co-blog-section" class="fh5co-section-gray">
+		<div id="fh5co-car" class="fh5co-section-gray">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
-						<h3>Our Blog</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit est facilis maiores, perspiciatis accusamus asperiores sint consequuntur debitis.</p>
+						<h3>Liste des vols</h3>
+						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
 					</div>
 				</div>
-			</div>
-			<div class="container">
+				<?php $tri=$_GET['tri'];?>
+				<table align="center">
+				<th>
+				<form method="GET" action="flightTri.php" >                 
+					<div class="col-xxs-12 col-xs-8 mt">
+					<div class="input-field">
+					  <select class="btn   " name="tri" id="tri" >
+					  		<option value="<?php echo($tri);?>"><?php echo($tri); ?></option>
+							<?php if($tri!="compagnie"){?><option value="compagnie">compagnie</option><?php }?>
+							<?php if($tri!="prix"){?><option value="prix">prix </option><?php }?>
+							<?php if($tri!="ville_depart"){?><option value="ville_depart" > ville_depart </option><?php }?>
+							<?php if($tri!="ville_arrivee"){?><option value="ville_arrivee"> ville_arrivee </option><?php }?>
+                      </select> 
+					</div>
+					</div>
+					<div class="col-xxs-10 col-xs-4 ">
+					<div class="input-field" >
+                      <button class="btn btn-warning btn-round now-ui-icons form-control">
+                      <a href="./AfficherVolR.php">
+                        <i class="now-ui-icons " >Trier</i> 
+                      </a>   
+                      </button>   
+                    </div>
+					</div>
+                </form>
+				</th>
+				</table>
 				<div class="row row-bottom-padded-md">
-					<div class="col-lg-4 col-md-4 col-sm-6">
-						<div class="fh5co-blog animate-box">
-							<a href="#"><img class="img-responsive" src="images/place-1.jpg" alt=""></a>
-							<div class="blog-text">
-								<div class="prod-title">
-									<h3><a href="#">30% Discount to Travel</a></h3>
-									<span class="posted_by">Sep. 15th</span>
-									<span class="comment"><a href="">21<i class="icon-bubble2"></i></a></span>
-									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-									<p><a href="#">Learn More...</a></p>
-								</div>
-							</div> 
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-4 col-sm-6">
-						<div class="fh5co-blog animate-box">
-							<a href="#"><img class="img-responsive" src="images/place-2.jpg" alt=""></a>
-							<div class="blog-text">
-								<div class="prod-title">
-									<h3><a href="#">Planning for Vacation</a></h3>
-									<span class="posted_by">Sep. 15th</span>
-									<span class="comment"><a href="">21<i class="icon-bubble2"></i></a></span>
-									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-									<p><a href="#">Learn More...</a></p>
-								</div>
-							</div> 
-						</div>
-					</div>
-					<div class="clearfix visible-sm-block"></div>
-					<div class="col-lg-4 col-md-4 col-sm-6">
-						<div class="fh5co-blog animate-box">
-							<a href="#"><img class="img-responsive" src="images/place-3.jpg" alt=""></a>
-							<div class="blog-text">
-								<div class="prod-title">
-									<h3><a href="#">Visit Tokyo Japan</a></h3>
-									<span class="posted_by">Sep. 15th</span>
-									<span class="comment"><a href="">21<i class="icon-bubble2"></i></a></span>
-									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-									<p><a href="#">Learn More...</a></p>
-								</div>
-							</div> 
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-4 col-sm-6">
-						<div class="fh5co-blog animate-box">
-							<a href="#"><img class="img-responsive" src="images/place-4.jpg" alt=""></a>
-							<div class="blog-text">
-								<div class="prod-title">
-									<h3><a href="#">30% Discount to Travel</a></h3>
-									<span class="posted_by">Sep. 15th</span>
-									<span class="comment"><a href="">21<i class="icon-bubble2"></i></a></span>
-									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-									<p><a href="#">Learn More...</a></p>
-								</div>
-							</div> 
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-4 col-sm-6">
-						<div class="fh5co-blog animate-box">
-							<a href="#"><img class="img-responsive" src="images/place-5.jpg" alt=""></a>
-							<div class="blog-text">
-								<div class="prod-title">
-									<h3><a href="#">Planning for Vacation</a></h3>
-									<span class="posted_by">Sep. 15th</span>
-									<span class="comment"><a href="">21<i class="icon-bubble2"></i></a></span>
-									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-									<p><a href="#">Learn More...</a></p>
-								</div>
-							</div> 
-						</div>
-					</div>
-					<div class="clearfix visible-sm-block"></div>
-					<div class="col-lg-4 col-md-4 col-sm-6">
-						<div class="fh5co-blog animate-box">
-							<a href="#"><img class="img-responsive" src="images/place-6.jpg" alt=""></a>
-							<div class="blog-text">
-								<div class="prod-title">
-									<h3><a href="#">Visit Tokyo Japan</a></h3>
-									<span class="posted_by">Sep. 15th</span>
-									<span class="comment"><a href="">21<i class="icon-bubble2"></i></a></span>
-									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-									<p><a href="#">Learn More...</a></p>
-								</div>
-							</div> 
-						</div>
-					</div>
-					<div class="clearfix visible-md-block"></div>
+					 <?PHP
+                        foreach($listeUsers as $user){		
+                      ?>
+					<div class="col-md-7 animate-box" >					
+						<div class="car">
+							<div class="one-4" align="center">
+								<h3> <?PHP echo $user['ville_depart']; ?> - <?PHP echo $user['ville']; ?></h3>
+								<span class="price"><?PHP echo $user['compagnie']; ?></span>
+								<span class="price">le: <?PHP echo $user['date_depart']; ?></span>
+								<span class="price"><?PHP echo $user['prix']; ?><small> DT</small></span>
+							
+							<form method="GET" action="detailsVolf.php">
+                            	<input class="btn btn-warning btn-round" type="submit" name="détails" value="détails">
+                            	<input type="hidden" value=<?PHP echo $user['id_vol']; ?> name="id_vol">
+                            </form>
+							
+							</div>
+							<div class="one-1" style="background-image: url(../back/assets/img/<?php echo $user['image'] ?> ); ">
+							</div>
+						</div>				
+					</div>					
+					<?PHP
+                    }
+                    ?>
 				</div>
-
 			</div>
 		</div>
-		<!-- fh5co-blog-section -->
+
+		
 		<div id="fh5co-testimonial" style="background-image:url(images/img_bg_1.jpg);">
 		<div class="container">
 			<div class="row animate-box">
