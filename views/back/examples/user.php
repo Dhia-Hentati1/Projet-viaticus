@@ -146,7 +146,7 @@
                         <div class="col-md-5 pr-1">
                             <div class="form-group">
                                 <label>email</label>
-                                <input type="text" name="email" class="form-control" placeholder="email">
+                                <input type="text" name="email" class="form-control" placeholder="email" pattern=".+@gmail.com|.+@esprit.tn">
                             </div>
                         </div>
 

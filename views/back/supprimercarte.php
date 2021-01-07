@@ -5,7 +5,7 @@ $carteC=new carteC();
 
 if (isset($_GET["id"])){
     $carteC->supprimercarte($_GET["id"]);
-    header('Location:examples/table2.php');
+    header('Location:examples/tables.php');
 }
 
 

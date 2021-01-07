@@ -131,9 +131,13 @@ $listeCarts=$carteC->affichercarte();
                 <h4 class="card-title"> Liste des utilisateurs</h4>
               </div>
               <button><a href="user.php">Ajouter un utilisateur</a></button>
+                <br>
+                <br>
+                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Recherche par Login" title="Type in a name">
+
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table">
+                  <table class="table" id="myTable">
                       <thead class=" text-primary">
                       <th>
                           CIN
@@ -205,6 +209,12 @@ $listeCarts=$carteC->affichercarte();
                             <div class="card-header">
                                 <h4 class="card-title"> Liste des cartes</h4>
                                 <button><a href="user.php">Ajouter une carte</a></button>
+                                <br>
+                                <br>
+                                <button> <a href="cartetriASC.php"> Trier par points (ordre croissant)</a> </button>
+                                <br>
+                                <br>
+                                <button> <a href="cartetriDESC.php"> Trier par points (ordre décroissant)</a> </button>
 
                             </div>
                             <div class="card-body">
@@ -280,7 +290,28 @@ $listeCarts=$carteC->affichercarte();
       </footer>
     </div>
   </div>
+  <script>
+      function myFunction() {
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("myInput");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("myTable");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+              td = tr[i].getElementsByTagName("td")[4];
+              if (td) {
+                  txtValue = td.textContent || td.innerText;
+                  if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                      tr[i].style.display = "";
+                  } else {
+                      tr[i].style.display = "none";
+                  }
+              }
+          }
+      }
+  </script>
   <!--   Core JS Files   -->
+
   <script src="../assets/js/core/jquery.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>

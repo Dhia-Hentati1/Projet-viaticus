@@ -19,7 +19,7 @@ if (
         );
 
         $cartC->modifiercarte($cart, $_GET['cin']);
-        header('Location:examples/table2.php');
+        header('Location:examples/tables.php');
     }
     else
         $error = "Missing information";
