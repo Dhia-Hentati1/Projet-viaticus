@@ -41,6 +41,8 @@ class utilisateurC
         }
     }
 
+
+
     function supprimerutilisateur($cin){
         $sql="DELETE FROM utilisateur WHERE cin= :cin";
         $db = config::getConnexion();
@@ -166,6 +168,30 @@ class carteC
     function affichercarte()
     {
         $sql = "SELECT * FROM carte";
+        $db = config::getConnexion();
+        try {
+            $liste = $db->query($sql);
+            return $liste;
+        } catch (Exception $e) {
+            die('Erreur: ' . $e->getMessage());
+        }
+    }
+
+    function trieracarte()
+    {
+        $sql = "SELECT * FROM carte order by pts DESC";
+        $db = config::getConnexion();
+        try {
+            $liste = $db->query($sql);
+            return $liste;
+        } catch (Exception $e) {
+            die('Erreur: ' . $e->getMessage());
+        }
+    }
+
+    function trierdcarte()
+    {
+        $sql = "SELECT * FROM carte order by pts ASC";
         $db = config::getConnexion();
         try {
             $liste = $db->query($sql);
